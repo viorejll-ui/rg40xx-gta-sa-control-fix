@@ -1,28 +1,68 @@
-# GTA San Andreas controller fix — Anbernic RG40XX H (muOS)
+GTA San Andreas Controller Fix — Anbernic RG40XX H (muOS)
 
-**Tested successfully on one Anbernic RG40XX H running muOS.** This is an unofficial, device-specific workaround for a native GTA San Andreas Linux/PortMaster-style port.
+Game Compatibility
 
-## Problem
+- Game: Grand Theft Auto: San Andreas (GTA SA)
+- Android game version: 2.10
+- Port: Native Linux / PortMaster-style ARM64 port
+- Device tested: Anbernic RG40XX H
+- Operating system: muOS
+- Status: Working — random controller inputs fixed
 
-GTA San Andreas launched, but the menu moved and selected items on its own. Other games worked normally. The game's log identified `muOS-Keys` using an `RG34XXSP` input profile with button and analog-axis codes that did not match the RG40XX H input events.
+Successfully tested on Anbernic RG40XX H running muOS. This is an unofficial workaround. Compatibility with other devices, operating systems, and game versions has not been confirmed.
 
-## Fix
+Problem
 
-- `axis_remap.py` reads `/dev/input/event3`, translates RG40XX H muOS button/axis codes into codes expected by the detected game profile, filters small stick movements with a deadzone, and exposes a virtual `GTASA-Remap` controller using Linux `uinput`. It exclusively grabs the source input while running to prevent duplicate events.
-- `Grand Theft Auto San Andreas.sh` launches the remapper before GTA, logs its output, and stops it after the game exits. It also retains the `unset SDL_VIDEODRIVER` workaround used in the tested installation and removes the earlier `GTASA_STICK_MAP` override.
+GTA San Andreas launched successfully, but the controls were broken. The menu kept navigating and selecting options automatically, even without pressing any buttons.
 
-## Install
+Other games worked normally.
 
-1. **Back up** your existing `roms/Ports/Grand Theft Auto San Andreas.sh` file.
-2. Copy `axis_remap.py` to `roms/Ports/gtasa/`.
-3. Replace `roms/Ports/Grand Theft Auto San Andreas.sh` with the script in this repository.
-4. If needed, make the launcher executable: `chmod +x "roms/Ports/Grand Theft Auto San Andreas.sh"`.
-5. Launch GTA San Andreas through your usual Ports menu.
+The game logs showed that "muOS-Keys" was detected using an "RG34XXSP" controller profile, which did not match the actual button and analog-stick layout of the RG40XX H.
 
-The remapper requires Python 3, permission to read `/dev/input/event3`, and permission to use `/dev/uinput` (typically root). No extra Python packages are needed.
+Solution
 
-## Compatibility / cautions
+The fix consists of two files:
 
-- The **source device is hardcoded to `/dev/input/event3`**. Other muOS versions/devices may enumerate the input controller differently.
-- This workaround is **not confirmed on other devices or GTA builds**. Back up your launcher first, and restore it if GTA does not start.
-- No GTA binaries, copyrighted game assets, APK/OBB files, or game data are included. You need your own legitimate game assets and compatible port.
+- "axis_remap.py" — Creates a virtual controller named "GTASA-Remap" using Linux "uinput", remaps buttons and analog axes, and applies a deadzone to prevent unwanted stick movements.
+- "Grand Theft Auto San Andreas.sh" — Starts the remapper automatically before launching GTA and stops it when the game exits.
+
+The modified launcher also preserves the "unset SDL_VIDEODRIVER" workaround required by the tested installation.
+
+No additional Python packages or compiler are required.
+
+Installation
+
+1. Back up your original "Grand Theft Auto San Andreas.sh".
+
+2. Copy "axis_remap.py" into "roms/Ports/gtasa/".
+
+3. Replace "roms/Ports/Grand Theft Auto San Andreas.sh" with the modified launcher from this repository.
+
+4. If necessary, make the launcher executable:
+   
+   "chmod +x "roms/Ports/Grand Theft Auto San Andreas.sh""
+
+5. Launch GTA San Andreas normally from the Ports menu.
+
+Result
+
+After applying the fix:
+
+- GTA San Andreas launches successfully.
+- The menu no longer navigates automatically.
+- Buttons and analog sticks work correctly.
+- The virtual controller starts and stops automatically with the game.
+
+Tested successfully on GTA San Andreas Android version 2.10 assets, Anbernic RG40XX H, and muOS.
+
+Important Notes
+
+- The script uses "/dev/input/event3" as its input source. This path may differ on other devices or muOS versions.
+- Python 3 and access to "/dev/uinput" are required.
+- Always back up your original launcher before making changes.
+- This fix has not been tested on other Anbernic models.
+- No copyrighted GTA binaries, APK/OBB files, or game assets are included. Users must provide their own legally obtained game files.
+
+Credits
+
+Troubleshooting, testing, and confirmation performed on a real Anbernic RG40XX H.
