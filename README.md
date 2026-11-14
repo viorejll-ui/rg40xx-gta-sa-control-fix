@@ -1,10 +1,11 @@
-GTA San Andreas Controller Fix — Anbernic RG40XX H (muOS)
+GTA San Andreas Controller Fix — Anbernic RG40XX H (muOS 2606.0 Andromeda)
 
 Game Compatibility
 
 - Game: Grand Theft Auto: San Andreas (GTA SA)
 - Android game version: 2.10
 - Port: Native Linux / PortMaster-style ARM64 port
+- PortMaster version: 2026.11.12-1059
 - Device tested: Anbernic RG40XX H
 - Operating system: muOS 2606.0 Andromeda
 - Status: Working — random controller inputs fixed
