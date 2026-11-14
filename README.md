@@ -6,7 +6,7 @@ Game Compatibility
 - Android game version: 2.10
 - Port: Native Linux / PortMaster-style ARM64 port
 - Device tested: Anbernic RG40XX H
-- Operating system: muOS
+- Operating system: muOS 2606.0 Andromeda
 - Status: Working — random controller inputs fixed
 
 Successfully tested on Anbernic RG40XX H running muOS. This is an unofficial workaround. Compatibility with other devices, operating systems, and game versions has not been confirmed.
