@@ -66,17 +66,27 @@ After applying the workaround on the tested device:
 
 Troubleshooting, testing, and confirmation performed on a real Anbernic RG40XX H.
 
-Two San Andreas entries in Ports?
-A backup launcher left in roms/Ports/ can appear as a second game entry. On our tested device, one entry had working controls; the other still had the original problem.
-Remove the extra entry
-Open roms/Ports/ in the muOS web file manager and check the full filenames.
-Keep the modified Grand Theft Auto San Andreas.sh in this folder.
-Select the backup launcher. On our device, its name began with Grand Theft Auto San Andreas.sh.b.
-Choose Move, change the destination from roms/Ports to roms, then confirm Move.
-On the handheld, leave the Ports menu and reopen it. Launch the remaining entry and test the controls.
-Keep the backup so you can restore it. If the remaining entry has broken controls, move the backup back and check which launcher is being used.
-Leave the gtasa/ folder where it is. It contains the game data. Check full filenames before moving anything: the menu showing or hiding .sh does not tell you which launcher is correct.
-Original installation guide
-GTA San Andreas 2.10 — R36S Wiki
-We used this guide for the initial installation. It is written for R36S / ArkOS using Android game assets 2.10, so paths and device-specific steps may differ on muOS.
-This repository adds the controller fix tested on Anbernic RG40XX H with muOS.
+## Two San Andreas entries in Ports?
+
+A backup launcher left in `roms/Ports/` can appear as a second game entry.
+On our tested device, one entry had working controls; the other still had the original problem.
+
+### Remove the extra entry
+
+1. Open `roms/Ports/` in the muOS web file manager and check the **full filenames**.
+2. Keep the modified **`Grand Theft Auto San Andreas.sh`** in this folder.
+3. Select the **backup launcher**. On our device, its name began with `Grand Theft Auto San Andreas.sh.b`.
+4. Choose **Move**, change the destination from `roms/Ports` to **`roms`**, then confirm **Move**.
+5. On the handheld, leave the Ports menu and reopen it. Launch the remaining entry and test the controls.
+
+**Keep the backup** so you can restore it. If the remaining entry has broken controls, move the backup back and check which launcher is being used.
+
+**Leave the `gtasa/` folder where it is.** It contains the game data. Check full filenames before moving anything: the menu showing or hiding `.sh` does not tell you which launcher is correct.
+
+## Original installation guide
+
+[GTA San Andreas 2.10 — R36S Wiki](https://r36swiki.com/wiki-gtasa.html)
+
+We used this guide for the initial installation. It is written for **R36S / ArkOS** using Android game assets **2.10**, so paths and device-specific steps may differ on muOS.
+
+This repository adds the controller fix tested on **Anbernic RG40XX H with muOS**.
